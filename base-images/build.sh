@@ -4,7 +4,7 @@ set -e
 ID_PREFIX="io.buildpacks.samples.stacks"
 
 DEFAULT_PREFIX=cnbs/sample-base
-DEFAULT_PLATFORM=amd64
+DEFAULT_PLATFORM=linux/amd64
 
 REPO_PREFIX=${DEFAULT_PREFIX}
 PLATFORM=${DEFAULT_PLATFORM}
@@ -63,17 +63,10 @@ BUILD_IMAGE=${REPO_PREFIX}-build:${TAG}
 FROM_IMAGE=$(head -n1 "${IMAGE_DIR}"/base/Dockerfile | cut -d' ' -f2)
 
 # Get target distro information
-if cmd /c ver; then
-DISTRO_NAME=""
-RAW_VERSION=$(docker run --rm "${FROM_IMAGE}" cmd /c ver)
-DISTRO_VERSION=$(echo "$RAW_VERSION" | head -n1 | sed 's/Microsoft Windows //' | sed 's/[][]//g' | cut -d' ' -f2)
-echo "DISTRO_VERSION: ${DISTRO_VERSION}"
-else
 DISTRO_NAME=$(docker run --rm "${FROM_IMAGE}" cat /etc/os-release | grep '^ID=' | cut -d'=' -f2)
 echo "DISTRO_NAME: ${DISTRO_NAME}"
 DISTRO_VERSION=$(docker run --rm "${FROM_IMAGE}" cat /etc/os-release | grep '^VERSION_ID=' | cut -d'=' -f2)
 echo "DISTRO_VERSION: ${DISTRO_VERSION}"
-fi
 
 if [[ -d "${IMAGE_DIR}/base" ]]; then
   docker build --platform=${PLATFORM} \
