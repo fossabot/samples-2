@@ -8,6 +8,8 @@ RUN apt update && \
 
 COPY ./bin/yj-linux /usr/local/bin/yj
 
+COPY ./cnb/build-config/env/* /cnb/build-config/env/
+
 # Create user and group
 ARG cnb_uid=1001
 ARG cnb_gid=1001
