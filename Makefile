@@ -62,22 +62,22 @@ build-buildpacks-alpine: build-sample-root
 
 build-buildpacks-noble: build-sample-root
 	@echo "> Creating 'hello-moon' app using 'noble' builder..."
-	$(PACK_CMD) build sample-hello-moon-app:noble -v --builder cnbs/sample-builder:noble --buildpack $(SAMPLES_ROOT)/buildpacks/hello-world --buildpack $(SAMPLES_ROOT)/buildpacks/hello-moon $(PULL_POLICY_NEVER) $(PACK_BUILD_FLAGS)
+	$(PACK_CMD) build sample-hello-moon-app:noble -v --builder cnbs/sample-builder:noble --buildpack $(SAMPLES_ROOT)/buildpacks/hello-world --buildpack $(SAMPLES_ROOT)/buildpacks/hello-moon $(PACK_BUILD_FLAGS)
 
 	@echo "> Creating 'hello-processes' app using 'noble' builder..."
-	$(PACK_CMD) build sample-hello-processes-app:noble -v --builder cnbs/sample-builder:noble --buildpack $(SAMPLES_ROOT)/buildpacks/hello-processes $(PULL_POLICY_NEVER) $(PACK_BUILD_FLAGS)
+	$(PACK_CMD) build sample-hello-processes-app:noble -v --builder cnbs/sample-builder:noble --buildpack $(SAMPLES_ROOT)/buildpacks/hello-processes $(PACK_BUILD_FLAGS)
 
 	@echo "> Creating 'hello-world' app using 'noble' builder..."
-	$(PACK_CMD) build sample-hello-world-app:noble -v --builder cnbs/sample-builder:noble --buildpack $(SAMPLES_ROOT)/buildpacks/hello-world $(PULL_POLICY_NEVER) $(PACK_BUILD_FLAGS)
+	$(PACK_CMD) build sample-hello-world-app:noble -v --builder cnbs/sample-builder:noble --buildpack $(SAMPLES_ROOT)/buildpacks/hello-world  $(PACK_BUILD_FLAGS)
 
 	@echo "> Creating 'java-maven' app using 'noble' builder..."
-	$(PACK_CMD) build sample-java-maven-app:noble -v --builder cnbs/sample-builder:noble --path apps/java-maven $(PULL_POLICY_NEVER) $(PACK_BUILD_FLAGS)
+	$(PACK_CMD) build sample-java-maven-app:noble -v --builder cnbs/sample-builder:noble --path apps/java-maven $(PACK_BUILD_FLAGS)
 
 	@echo "> Creating 'kotlin-gradle' app using 'noble' builder..."
-	$(PACK_CMD) build sample-kotlin-gradle-app:noble -v --builder cnbs/sample-builder:noble --path apps/kotlin-gradle $(PULL_POLICY_NEVER) $(PACK_BUILD_FLAGS)
+	$(PACK_CMD) build sample-kotlin-gradle-app:noble -v --builder cnbs/sample-builder:noble --path apps/kotlin-gradle $(PACK_BUILD_FLAGS)
 
 	@echo "> Creating 'ruby-bundler' app using 'noble' builder..."
-	$(PACK_CMD) build sample-ruby-bundler-app:noble -v --builder cnbs/sample-builder:noble --path apps/ruby-bundler $(PULL_POLICY_NEVER) $(PACK_BUILD_FLAGS)
+	$(PACK_CMD) build sample-ruby-bundler-app:noble -v --builder cnbs/sample-builder:noble --path apps/ruby-bundler $(PACK_BUILD_FLAGS)
 
 build-linux-packages: build-sample-root
 	@echo "> Creating 'hello-world' buildpack package"
